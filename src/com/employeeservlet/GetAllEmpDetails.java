@@ -27,8 +27,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		
 		RequestDispatcher rd = request.getRequestDispatcher("alldetails.jsp");
 		rd.forward(request, response);
-		
-	}
+		}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
@@ -40,9 +39,6 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			ResultSet rs = edao.getAllEmployee();
 			
 			l=new ArrayList();
-			
-			
-			
 			while(rs.next()){
 				Employee e=new Employee();
 				
@@ -60,8 +56,6 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 				int salary = rs.getInt("salary");
 				//request.setAttribute("salary", salary);
 				e.setSalary(salary);
-
-				
 				String designation = rs.getString("designation");
 				//request.setAttribute("designation", designation);
 				e.setDesignation(designation);
@@ -71,7 +65,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} 
-		
+		System.out.println("updating");
 		request.setAttribute("list",l);
 		RequestDispatcher rd = request.getRequestDispatcher("allemp.jsp");
 		rd.forward(request, response);
